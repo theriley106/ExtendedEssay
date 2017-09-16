@@ -7,6 +7,14 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  <style>
+  .form-control {
+    min-width: 0;
+    width: 80% !important;
+    color:black;
+  }
+  </style>
   <script>
   var holder = document.getElementById('holder'),
       state = document.getElementById('status');
@@ -38,9 +46,10 @@
 
 
 <form role = "form">
+<center>
    <div class = "form-group">
-      <label for = "name">Text Area</label>
-      <textarea class = "form-control" rows = "30"></textarea>
+      <h1><label for = "name">Essay Extender</label></h1>
+      <textarea class = "form-control input-lg" rows = "30" width=80%></textarea>
    </div>
-   
+   </center>
 </form>
