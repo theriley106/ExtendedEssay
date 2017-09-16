@@ -72,3 +72,5 @@ if __name__ == "__main__":
 
 
 #Cognitive services api collection
+
+# Quote rejection

@@ -7,6 +7,31 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+  var holder = document.getElementById('holder'),
+      state = document.getElementById('status');
+
+
+   
+  holder.ondragover = function () { this.className = 'hover'; return false; };
+  holder.ondragend = function () { this.className = ''; return false; };
+  holder.ondrop = function (e) {
+    this.className = '';
+    e.preventDefault();
+
+    var file = e.dataTransfer.files[0],
+        reader = new FileReader();
+    reader.onload = function (event) {
+      console.log(event.target);
+      holder.style.background = 'url(' + event.target.result + ') no-repeat center';
+    };
+    console.log(file);
+    reader.readAsDataURL(file);
+
+    return false;
+  };
+  </script>
+
 </head>
 
 
