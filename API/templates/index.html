@@ -8,51 +8,22 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-  <style>
-  .form-control {
-    min-width: 0;
-    width: 80% !important;
-    color:black;
-  }
-  </style>
-  <script>
-  var holder = document.getElementById('holder'),
-      state = document.getElementById('status');
-
-
-
-  holder.ondragover = function () { this.className = 'hover'; return false; };
-  holder.ondragend = function () { this.className = ''; return false; };
-  holder.ondrop = function (e) {
-    this.className = '';
-    e.preventDefault();
-
-    var file = e.dataTransfer.files[0],
-        reader = new FileReader();
-    reader.onload = function (event) {
-      console.log(event.target);
-      holder.style.background = 'url(' + event.target.result + ') no-repeat center';
-    };
-    console.log(file);
-    reader.readAsDataURL(file);
-
-    return false;
-  };
-  </script>
 
 </head>
 
 
 
 
-<form role = "form">
+<form id="myform" role = "form" action = "{{url_for('downloadFile') }}" method="post">
 <center>
    <div class = "form-group">
       <h1><label for = "name">Essay Extender</label></h1>
-      <textarea class = "form-control input-lg" rows = "20" width="80%" height="55%"></textarea>
+      <textarea class = "form-control input-lg" name = "essay" rows = "20" width="80%" height="55%"></textarea>
    </div>
    <div class = "form-group">
-      <img src="https://preview.ibb.co/dP61m5/button.png" width="200px" height="200px" onclick=""></img>
+      <input class="btn btn-default" type="submit" name="white" value="1" action="/downloadFile/">
+      <input type="image" src="https://preview.ibb.co/dP61m5/button.png" name="saveForm" class="btTxt submit" id="saveForm" action="/downloadFile"/>
+      <!--<input type="image" src="https://preview.ibb.co/dP61m5/button.png" width="200px" type="submit" height="200px" form="myform" onclick="/downloadFile"></img>-->
    </div>
    </center>
 </form>
