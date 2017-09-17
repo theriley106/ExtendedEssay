@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response
 import os
+import time
+import inflect
 
 
 app = Flask(__name__)
@@ -7,6 +9,36 @@ app = Flask(__name__)
 def doStuffToEssay(essay):
 	print essay
 	return essay
+
+def convertAllNum(text):
+	a = []
+	for stri in text.split(' '):
+		strc = stri.replace(',', '')
+		print strc
+		try:
+			e = int(strc)
+			e = numToWord(e)
+		except Exception as exp:
+			e = str(stri)
+		a.append(e)
+	return ' '.join(a)
+
+def countNumberOf(text, char):
+	return test.count(char)
+
+def numToWord(num):
+	p = inflect.engine()
+	return p.number_to_words(num)
+
+def returnRandomValues(startval, endval, amount):
+	if (endval - startval) > amount:
+		return None
+	a = []
+	while a < amount:
+		value = random.randint(startval, endval)
+		if value not in a:
+			a.append(value)
+	return a
 
 @app.route('/')
 def form():
@@ -20,6 +52,7 @@ def create_essay():
 	return doStuffToEssay(text)
 
 
+
 @app.route('/test')
 def test():
 	return "Test"
@@ -30,6 +63,7 @@ def downloadFile():
 	values = request.form.items()
 	text = values[0][1]
 	essay = doStuffToEssay(text)
+	time.sleep(2.8)
 	return str(essay)
 	'''return Response(
 		'test.txt',
