@@ -1,8 +1,6 @@
-# encoding=utf8
-import sys
-reload(sys)
-sys.setdefaultencoding('utf8')
-from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response, send_file, send_from_directory, make_response
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+from flask import Flask, request, render_template, request, url_for, redirect, Markup, Response
 import os
 import time
 import inflect
@@ -16,32 +14,24 @@ from quoteRemover import *
 
 app = Flask(__name__)
 
-def doStuffToEssay(essay, txtsave=None, punc=None, acr=None, spel=None, verb=None, proc=None):
-	a = essay.split(' ')
-	originalLength = len(a)
+def doStuffToEssay(essay, punc=None, acr=None, spel=None, verb=None, proc=None):
 	essay, quotes = replaceQuotesWith(essay)
 	essay = convertAllNum(essay)
 	essay = contractions.fix(essay)
 	essay = convertStates(essay)
 	Accuracy = spellCheck(essay)
 	for q in quotes:
-		essay = essay.partition('*')[0] + str(q) + essay.partition('*')[2]
-	a = essay.split(' ')
-	newLength = len(a)
-	essay = "Original Length: {}\nNew Length: {}\nIncrease: {}%\n\n{}".format(originalLength, newLength, int(float(float(newLength) / float(originalLength) * 100)), essay)
+		essay.partition('*')[0] + str(q) + essay.partition('*')[2]
+	a = str(random.randint(1000000000, 9999999999)) + '.txt'
+	filez = "{}/static/{}".format(os.getcwd(), a)
+	os.system('touch {}'.format(filez))
+	file = open(filez, "w")
+	file.write(essay)
+	file.close()
 	return essay
 
-@app.route('/csv/')  
-def download_csv():  
-	csv = 'test'  
-	response = make_response(csv)
-	cd = 'attachment; filename=essay.txt'
-	response.headers['Content-Disposition'] = cd 
-	response.mimetype='text/txt'
-	return response
-
 def get_num(x):
-	return int(''.join(ele for ele in x if ele.isdigit()))
+    return int(''.join(ele for ele in x if ele.isdigit()))
 
 def bloombergVar(stock="AAPL"):
 	a = requests.Session()
@@ -163,7 +153,7 @@ def convertStates(text):
 	a = []
 	for stri in text.split(' '):
 		try:
-			e = states[stri]
+			e = states[stri.upper()]
 			a.append(e)
 		except Exception as exp:
 			a.append(stri)
@@ -212,7 +202,7 @@ def returnRandomValues(startval, endval, amount):
 
 @app.route('/')
 def form():
-	return render_template('index.html', var1=var1, var2=var2, var3=var3, var4=var4, var5=var5)
+	return render_template('index.html')
 
 @app.route('/extendedEssay/compute', methods=['POST'])
 def create_essay():
@@ -231,13 +221,17 @@ def test():
 @app.route('/fileDownloading/<filet>')
 def fileDownloading(filet, download=False):
 	#this returns the file as a text
-	print filet
 	try:
-		return Response(
-		filet,
-		mimetype="text",
-		headers={"Content-disposition":
-				 "attachment; filename={}".format(filename)})
+		file = "{}/static/{}.txt".format(os.getcwd(), filet)
+		f = open(file,'r')
+		if download == False:
+			return f
+		else:
+			return Response(
+			file,
+			mimetype="text",
+			headers={"Content-disposition":
+					 "attachment; filename={}".format(filename)})
 	except:
 		return None
 
@@ -245,26 +239,10 @@ def fileDownloading(filet, download=False):
 def downloadFile():
 	#redirect(url_for('form'))
 	values = request.form.items()
-	for v in values:
-		if "verb" in v:
-			verb = v[1]
-		if 'spel' in v:
-			spel = v[1]
-		if 'acr' in v:
-			acr = v[1]
-		if 'txtsave' in v:
-			txtsave = v[1]
-		if 'proc' in v:
-			proc = v[1]
 	text = values[0][1]
-	txtsave = True
-	essay = doStuffToEssay(text, proc=proc, txtsave=txtsave, acr=acr, spel=spel, verb=verb)
+	essay = doStuffToEssay(text)
 	time.sleep(2.8)
-	response = make_response(essay)
-	cd = 'attachment; filename=essay.txt'
-	response.headers['Content-Disposition'] = cd 
-	response.mimetype='text/txt'
-	return response
+	return str(essay)
 	'''return Response(
 		'test.txt',
 		mimetype="text",
@@ -274,10 +252,10 @@ def downloadFile():
 
 if __name__ == "__main__":
 	'''print bloombergVar()
-	str((pnyMellon() + bloombergVar()) /2)[-1]
-	print str((capOne() + mathWorks()) / 2)[-1]
+	print pnyMellon()
+	print capOne()
 	print mathWorks()
-	print str(twoSigma() + myLutron()) / 2)[-1]
+	print twoSigma()
 	print myLutron()
 	print oracle()'''
 	#print wayFair()
@@ -285,11 +263,5 @@ if __name__ == "__main__":
 	#print makeSchool()
 	#print qualtrics()
 	#print soylent()
-	#print getTech()
-	var1 = str((twoSigma() + myLutron()) / 2)[-1]
-	var2 = str((capOne() + mathWorks()) / 2)[-1]
-	var3 = str((twoSigma() + myLutron()) / 2)[-1]
-	var4 = str((wayFair() + oracle() + deshaw()) /2)[-1]
-	var5 = str((makeSchool() + qualtrics() + soylent()) / 2)[-1]
-	var6 = str(getTech())[-1]
+	print getTech()
 	app.run(host='0.0.0.0', port=8888)
