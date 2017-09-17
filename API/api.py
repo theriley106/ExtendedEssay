@@ -27,14 +27,15 @@ def test():
 @app.route("/downloadFile", methods=["POST"])
 def downloadFile():
 	#redirect(url_for('form'))
-	for key, value in request.form.items():
-		print key, value
-	os.system('hello > test.txt')
-	return Response(
+	values = request.form.items()
+	text = values['essay']
+	essay = doStuffToEssay(text)
+	return str(essay)
+	'''return Response(
 		'test.txt',
 		mimetype="text",
 		headers={"Content-disposition":
-				 "attachment; filename=test.txt"})
+				 "attachment; filename=test.txt"})'''
 	#return redirect(url_for('test'))
 
 if __name__ == "__main__":
