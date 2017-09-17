@@ -7,17 +7,57 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #3498db;
+}
 
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #51b0ef;
+}
+h1{
+  font-size: 40pt;
+}
+  </style>
 </head>
 
 
 <body onunload="onUnload()">
+
+  <ul>
+  <li><a href="#"><img src="https://preview.ibb.co/cZq5UQ/logo.png" width="183" height="70"></a></img></li>
+  <li><h3><a href="#contact">Contact Us</a></h3></li>
+</ul>
 
 <form id="myform" role = "form" action = "{{url_for('downloadFile') }}" method="post">
 <center>
    <div class = "form-group" style = "align:center" width="70%" height="60%">
       <h1><label for = "name">Essay Extender</label></h1>
       <textarea class = "form-control input-lg" name = "essay" rows = "15" cols="7" id="textarea"></textarea>
+   </div>
+   <div class = "form-group" style = "align:center" width="70%" height="60%">
+      <p><label for = "firstParam">Acronym finder strength (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
+      <p><label for = "firstParam">Spellcheck strictness (1-10):<textarea class = "form-control input-lg" id="spellcheck" rows="1" cols="2"></textarea></label></p>
+      <p><label for = "firstParam">Anglicization strength (1-10):<textarea class = "form-control input-lg" id="anglicization" rows="1" cols="2"></textarea></label></p>
+      <p><label for = "firstParam">Conjunction expander intensity (1-10):<textarea class = "form-control input-lg" id="conjunction" rows="1" cols="2"></textarea></label></p>
+      <p><label for = "firstParam">Processing intenstity [time inscreases w/ intensity] (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
+      <p><label for = "firstParam">Download file as .txt after?<input type="checkbox" value="1" class = "form-control input-lg" id="acronym" rows="1" cols="2"></input></label></p>
    </div>
    <div class = "form-group">
       <!--<input class="btn btn-default" type="submit" name="white" value="1" action="/downloadFile/">-->
@@ -44,4 +84,8 @@
     setTimeout(function(){document.getElementById('saveForm').src = 'https://preview.ibb.co/dP61m5/button.png';}, 2800);
   }
 </script>
+
+<br>
+<br>
+<h5 id="contact"><b>Contact Us:</b> brh2017winners@gmail.com</h5>
 </body>
