@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-def doStuffToEssay(text):
+def doStuffToEssay(essay):
 	print essay
 	return essay
 
@@ -24,11 +24,11 @@ def create_essay():
 def test():
 	return "Test"
 
-@app.route("/downloadFile", methods=["POST"])
+@app.route("/", methods=["POST"])
 def downloadFile():
 	#redirect(url_for('form'))
 	values = request.form.items()
-	text = values['essay']
+	text = values[0][1]
 	essay = doStuffToEssay(text)
 	return str(essay)
 	'''return Response(
