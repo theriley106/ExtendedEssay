@@ -18,6 +18,8 @@
 
 li {
     float: left;
+    text-align: center;
+    padding: 14px 16px;
 }
 
 li a {
@@ -32,7 +34,7 @@ li a:hover {
     background-color: #51b0ef;
 }
 h1{
-  font-size: 40pt;
+  font-size: 30pt;
 }
   </style>
 </head>
@@ -47,21 +49,22 @@ h1{
 
 <form id="myform" role = "form" action = "{{url_for('downloadFile') }}" method="post">
 <center>
-   <div class = "form-group" style = "align:center" width="70%" height="60%">
-      <h1><label for = "name">Essay Extender</label></h1>
-      <textarea class = "form-control input-lg" name = "essay" rows = "15" cols="7" id="textarea"></textarea>
+   <div class = "form-group" style = "align:center; padding-left: 2%;" width="70%" height="60%">
+      <h1><label for = "name">Essay Saver</label></h1>
+      <textarea style="width: 48%; float: left;"class = "form-control input-lg" name = "essay" rows = "20" cols="7" id="textarea"></textarea>
    </div>
    <div class = "form-group" style = "align:center" width="70%" height="60%">
-      <p><label for = "firstParam">Acronym finder strength (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
-      <p><label for = "firstParam">Spellcheck strictness (1-10):<textarea class = "form-control input-lg" id="spellcheck" rows="1" cols="2"></textarea></label></p>
-      <p><label for = "firstParam">Anglicization strength (1-10):<textarea class = "form-control input-lg" id="anglicization" rows="1" cols="2"></textarea></label></p>
-      <p><label for = "firstParam">Conjunction expander intensity (1-10):<textarea class = "form-control input-lg" id="conjunction" rows="1" cols="2"></textarea></label></p>
-      <p><label for = "firstParam">Processing intenstity [time inscreases w/ intensity] (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
-      <p><label for = "firstParam">Download file as .txt after?<input type="checkbox" value="1" class = "form-control input-lg" id="acronym" rows="1" cols="2"></input></label></p>
+     <h4 style="font-size:13pt"><b>Paste your essay in the text area above and fill out the fields. Then hit the blue button!</b></h4>
+     <ul style="background-color: #FFFFFF;"><br><li><p><label for = "firstParam">Acronym finder strength (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
+      </li><li><p><label for = "firstParam">Spellcheck strictness (1-10):<textarea class = "form-control input-lg" id="spellcheck" rows="1" cols="2"></textarea></label></p>
+      </li><li><p><label for = "firstParam">Anglicization strength (1-10):<textarea class = "form-control input-lg" id="anglicization" rows="1" cols="2"></textarea></label></p>
+      </li><li><p><label for = "firstParam">Conjunction expander intensity (1-10):<textarea class = "form-control input-lg" id="conjunction" rows="1" cols="2"></textarea></label></p>
+      </li><li><p><label for = "firstParam">Processing intenstity [time inscreases w/ intensity] (1-10):<textarea class = "form-control input-lg" id="acronym" rows="1" cols="2"></textarea></label></p>
+    </li></ul>
    </div>
    <div class = "form-group">
       <!--<input class="btn btn-default" type="submit" name="white" value="1" action="/downloadFile/">-->
-      <input type="image" src="https://preview.ibb.co/dP61m5/button.png" name="saveForm" class="btTxt submit" id="saveForm" action="/downloadFile"/ width="200" height="200" onclick="passThru()">
+      <input style="float: middle;" type="image" src="https://preview.ibb.co/dP61m5/button.png" name="saveForm" class="btTxt submit" id="saveForm" action="/downloadFile"/ width="200" height="200" onclick="passThru()">
       <!--<input type="image" src="https://preview.ibb.co/dP61m5/button.png" width="200px" type="submit" height="200px" form="myform" onclick="/downloadFile"></img>-->
    </div>
    </center>
