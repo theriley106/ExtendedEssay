@@ -1,14 +1,33 @@
 # ExtendedEssay
-Github repository to hold our code for our BigRedHacks projects
 
-Creating a Chrome Extension and Web Application to artificially increase the length of essays.
+Have you ever been on that last leg of an essay? You’re almost at the word count; Just 1 more paragraph, but Netflix beckons your eyes more and more often until they’re locked on the 8th season of The Office as your eyes slowly oscillate around being closed completely.
 
-To do
+With EssaySaver, that is no more. EssaySaver’s patented (but not really) technology operates as a standalone web app. Simply paste, select, and go! Our webapp hooks into our custom EssaySaver API which connects you to our custom essay enhancement algorithm which reads your essay and makes improvement based on what it finds, all while making your essay longer! 
 
-- [ ] Brainstorm ideas for increasing the length of an essay on [Collaborative Google Docs](https://docs.google.com/document/d/17RrOgCksZrcP_DpBNx7Dnww5Xl_NjijZZ7rwvKfSAs0/edit?usp=sharing)
+Features:
+* Acronym expansion tool (writes out acronyms!) (increases word count and length)
+* Utilization of the Levenshtein distance to ensure spelling accuracy
+* Anglicization (turns non-word symbols into words, like numbers!) (increases word count and length)
+* Conjunction expansion (expands conjunctions to increase word count and length)
+* Quote Rejection Technology (doesn’t affect items in quotes!) (maintains quotes)
 
-- [ ] Create some sort of API to feed text files through
+## API Usage
 
-- [ ] Create Chrome Extension that connects with the API
-- [ ] Create Web Application
-- [ ] Upload Web Application to AWS
+We have successfully implemented the following Public and Private APIs into our web application:
+
+* Bloomberg
+* BNY Mellon
+* ITG
+* Capital One
+* Datto
+* MathWorks
+* Two Sigma
+* JPMorgan Chase & Co
+* Lutron
+* Oracle
+* Wayfair
+* DEShaw and Co
+* MakeSchool
+* Qualtrics
+* Soylent
+* .Tech Domains
