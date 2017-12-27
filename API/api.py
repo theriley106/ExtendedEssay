@@ -162,6 +162,8 @@ def convertPunctuation(text):
 def convertStates(text):
 	a = []
 	for stri in text.split(' '):
+		stri = stri.replace(',', '')
+		stri = stri.replace('.', '')
 		try:
 			e = states[stri]
 			a.append(e)
